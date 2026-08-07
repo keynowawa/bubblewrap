@@ -471,15 +471,12 @@ body {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-primary);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
-
-/* Icon color variants */
-.feat-icon--touch   { background: rgba(255, 140, 105, 0.10); color: #ff8c69; }
-.feat-icon--haptic  { background: rgba(108, 180, 255, 0.10); color: #6cb4ff; }
-.feat-icon--physics { background: rgba(180, 130, 255, 0.10); color: #b482ff; }
-.feat-icon--native  { background: rgba(100, 220, 160, 0.10); color: #64dca0; }
 
 .feat-title {
   font-size: 17px;

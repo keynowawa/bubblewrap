@@ -4,72 +4,47 @@ import { useState, useCallback, useRef, useEffect } from 'react'
    SVG Icons — bespoke to bubblewrap
    ═══════════════════════════════════════ */
 
-// A finger pressing down on a surface with pressure lines
+// A minimalist trackpad interaction
 function IconFingerPress() {
   return (
-    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      {/* Finger */}
-      <path d="M16 4v14" />
-      <path d="M12 6c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" />
-      {/* Surface */}
-      <path d="M6 22h20" opacity="0.5" />
-      {/* Pressure dip */}
-      <path d="M10 22c0 0 2.5-3 6-3s6 3 6 3" />
-      {/* Pressure rings */}
-      <path d="M12 26c0-1.5 1.8-2.5 4-2.5s4 1 4 2.5" opacity="0.35" />
-      <path d="M9 29c0-2 3.1-3.5 7-3.5s7 1.5 7 3.5" opacity="0.2" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="6" width="20" height="12" rx="2" />
+      <path d="M12 11v6" />
+      <circle cx="12" cy="11" r="2" />
     </svg>
   )
 }
 
-// Concentric rings radiating from a single press point — haptic pulse
+// A minimalist haptic wave / pulse
 function IconHapticPulse() {
   return (
-    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      {/* Contact point */}
-      <circle cx="16" cy="16" r="2" fill="currentColor" />
-      {/* Pulse rings */}
-      <circle cx="16" cy="16" r="6" opacity="0.6" />
-      <circle cx="16" cy="16" r="10" opacity="0.35" />
-      <circle cx="16" cy="16" r="14" opacity="0.15" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 4a8 8 0 0 1 8 8 8 8 0 0 1-8 8" opacity="0.3" />
+      <path d="M12 8a4 4 0 0 1 4 4 4 4 0 0 1-4 4" opacity="0.6" />
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
     </svg>
   )
 }
 
-// A bubble being squeezed — circle compressed from top
+// Minimalist physics/deformation (drop squish)
 function IconBubbleSquish() {
   return (
-    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      {/* Squished bubble shape */}
-      <ellipse cx="16" cy="18" rx="10" ry="8" />
-      {/* Pressure from above */}
-      <path d="M11 11l2 3" opacity="0.4" />
-      <path d="M21 11l-2 3" opacity="0.4" />
-      <path d="M16 8v4" opacity="0.4" />
-      {/* Specular highlight */}
-      <ellipse cx="13" cy="15" rx="2.5" ry="1" opacity="0.3" fill="currentColor" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v6" />
+      <path d="M9 6l3 3 3-3" />
+      <ellipse cx="12" cy="17" rx="8" ry="4" opacity="0.8" />
+      <ellipse cx="12" cy="17" rx="4" ry="2" opacity="0.4" />
     </svg>
   )
 }
 
-// macOS menu bar strip with a bubble icon in the system tray
+// Minimalist menu bar / native app
 function IconMenuBarTray() {
   return (
-    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      {/* Menu bar strip */}
-      <rect x="2" y="4" width="28" height="6" rx="1.5" />
-      {/* Apple menu dot */}
-      <circle cx="6" cy="7" r="1" fill="currentColor" opacity="0.5" />
-      {/* Tray: tiny bubble icon */}
-      <circle cx="24" cy="7" r="1.8" />
-      <ellipse cx="23" cy="6.2" rx="0.6" ry="0.3" fill="currentColor" opacity="0.4" />
-      {/* Dropdown panel */}
-      <rect x="16" y="12" width="14" height="16" rx="2" opacity="0.6" />
-      {/* Bubbles in panel */}
-      <circle cx="21" cy="17" r="2" opacity="0.4" />
-      <circle cx="27" cy="17" r="2" opacity="0.4" />
-      <circle cx="21" cy="23" r="2" opacity="0.4" />
-      <circle cx="27" cy="23" r="2" opacity="0.4" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 8h18" />
+      <circle cx="17" cy="6" r="1" fill="currentColor" />
     </svg>
   )
 }
@@ -112,6 +87,10 @@ function HeroBubble() {
     if (popped) return
     setPopped(true)
     setRipple(true)
+
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      navigator.vibrate(30)
+    }
 
     setParticles(
       Array.from({ length: 10 }, (_, i) => {
@@ -157,6 +136,10 @@ function BubbleGrid() {
   const pop = useCallback((id) => {
     setBubbles(prev => prev.map(b => b.id === id && !b.popped ? { ...b, popped: true } : b))
     setPops(c => c + 1)
+    
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      navigator.vibrate(20)
+    }
   }, [])
 
   const allPopped = bubbles.every(b => b.popped)
@@ -170,7 +153,7 @@ function BubbleGrid() {
   }, [allPopped])
 
   return (
-    <div className="glass playground-card">
+    <div className="glass playground-card w-full max-w-[400px]">
       <div className="flex items-baseline justify-between mb-6">
         <p className="text-sm text-text-secondary">Pop them all.</p>
         <div className="flex items-baseline gap-2">
@@ -370,7 +353,7 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {features.map(({ Icon, variant, title, desc }) => (
                 <div key={title} className="feat-card glass">
-                  <div className={`feat-icon feat-icon--${variant}`}>
+                  <div className="feat-icon">
                     <Icon />
                   </div>
                   <h3 className="feat-title">{title}</h3>
@@ -393,7 +376,7 @@ export default function App() {
               </h2>
             </div>
 
-            <div className="max-w-lg mx-auto">
+            <div className="max-w-lg mx-auto flex flex-col items-center justify-center">
               <BubbleGrid />
             </div>
           </div>
