@@ -339,12 +339,48 @@ export default function App() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="border-t border-glass-border py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span className="text-xs text-text-tertiary">bubblewrap</span>
-            <p className="text-xs text-text-tertiary">
-              Built with Swift + AppKit. Requires Force Touch trackpad.
-            </p>
+        <footer className="border-t border-glass-border pt-16 pb-8 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-5 gap-8 mb-12">
+            <div className="sm:col-span-2 pr-4">
+              <span className="block text-lg font-semibold tracking-tight text-text-primary mb-3">
+                bubblewrap
+              </span>
+              <p className="text-sm text-text-secondary leading-relaxed max-w-sm">
+                Digital bubble wrap with real Force Touch haptics. Pop stress away directly from your macOS menu bar, using native AppKit physics.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-sm font-semibold text-text-primary mb-4">Quick Links</h4>
+              <ul className="space-y-2.5 text-sm text-text-secondary">
+                <li><a href="#" className="hover:text-accent transition-colors">What is bubblewrap?</a></li>
+                <li><a href="#" className="hover:text-accent transition-colors">How It Works</a></li>
+                <li><a href="#" className="hover:text-accent transition-colors">Data Privacy</a></li>
+                <li><a href="#" className="hover:text-accent transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-text-primary mb-4">Resources</h4>
+              <ul className="space-y-2.5 text-sm text-text-secondary">
+                <li><a href="/BubbleWrap.zip" download className="hover:text-accent transition-colors">Download App</a></li>
+                <li><a href="https://github.com/keynowawa/bubblewrap" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">GitHub Repository</a></li>
+                <li><a href="mailto:info.keyno@gmail.com" className="hover:text-accent transition-colors">Report an Issue</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-text-primary mb-4">Legal</h4>
+              <ul className="space-y-2.5 text-sm text-text-secondary">
+                <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-accent transition-colors">Terms & Conditions</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-glass-border/40 text-[13px] text-text-tertiary">
+            <span>v1.0.0 &copy; 2026 keynowawa. All rights reserved.</span>
+            <span>Developed by Kyann Tagle</span>
           </div>
         </footer>
       </main>
