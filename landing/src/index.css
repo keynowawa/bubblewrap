@@ -421,31 +421,7 @@ body {
   100% { transform: scale(1.4); opacity: 0; }
 }
 
-/* ═══════════════════════════════════════
-   Scroll down indicator
-   ═══════════════════════════════════════ */
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--color-text-tertiary);
-  animation: scroll-bob 2s ease-in-out infinite;
-}
-
-@keyframes scroll-bob {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
-  50% { transform: translateX(-50%) translateY(6px); opacity: 0.8; }
-}
-
-.scroll-hint-dot {
-  animation: scroll-dot 2s ease-in-out infinite;
-}
-
-@keyframes scroll-dot {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(4px); opacity: 0.3; }
-}
+/* Removed scroll indicator */
 
 /* ═══════════════════════════════════════
    Feature cards

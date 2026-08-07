@@ -281,19 +281,7 @@ function DownloadButton() {
   )
 }
 
-/* ═══════════════════════════════════════
-   Scroll down indicator
-   ═══════════════════════════════════════ */
-function ScrollHint() {
-  return (
-    <div className="scroll-hint">
-      <svg width="20" height="32" viewBox="0 0 20 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <rect x="1" y="1" width="18" height="30" rx="9" />
-        <line x1="10" y1="8" x2="10" y2="14" className="scroll-hint-dot" />
-      </svg>
-    </div>
-  )
-}
+// Scroll hint removed
 
 /* ═══════════════════════════════════════
    Page
@@ -320,21 +308,19 @@ export default function App() {
               <HeroBubble />
             </div>
 
-            <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.035em] leading-[1.05] mb-7">
-              <span className="bg-gradient-to-b from-white via-white/85 to-white/40 bg-clip-text text-transparent">
-                Stress relief, <br />one pop at a time.
-              </span>
+            <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.035em] leading-[1.05] mb-7 flex flex-col bg-gradient-to-b from-white via-white/85 to-white/40 bg-clip-text text-transparent">
+              <span className="block">Stress relief,</span>
+              <span className="block">one pop at a time.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-lg mx-auto mb-12">
-              Your Mac trackpad becomes bubble wrap. <br className="hidden sm:block" />
-              Press down. Feel the pop. That's it.
-            </p>
+            <div className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-lg mx-auto mb-12">
+              <p className="mb-1 sm:mb-0">Your Mac trackpad becomes bubble wrap.</p>
+              <p>Press down. Feel the pop. That's it.</p>
+            </div>
 
             <DownloadButton />
           </div>
 
-          <ScrollHint />
         </section>
 
         {/* ── Features ── */}
