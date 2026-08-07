@@ -51,8 +51,8 @@ function IconMenuBarTray() {
 
 function AppleLogo() {
   return (
-    <svg width="16" height="20" viewBox="0 0 18 22" fill="currentColor">
-      <path d="M14.94 5.84c-.08.06-1.55.9-1.55 2.73 0 2.12 1.86 2.88 1.92 2.9-.01.05-.3 1.03-1 2.04-.6.88-1.23 1.77-2.2 1.77s-1.2-.56-2.31-.56c-1.08 0-1.47.58-2.36.58-.89 0-1.52-.82-2.21-1.82C4.21 11.89 3.5 9.6 3.5 7.45c0-3.47 2.26-5.31 4.47-5.31.88 0 1.62.58 2.18.58.52 0 1.34-.61 2.33-.61.38 0 1.72.03 2.46 1.73zM11.8.01c.08.63-.22 1.28-.6 1.74-.42.5-1.1.88-1.77.88-.1-.01-.2-.01-.22-.03-.02-.08-.03-.2-.03-.32 0-.62.26-1.28.62-1.72C10.22.1 10.93-.25 11.55-.29c.02.1.05.2.05.3h.2z" />
+    <svg width="18" height="22" viewBox="0 0 384 512" fill="currentColor">
+      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
     </svg>
   )
 }
@@ -154,8 +154,8 @@ function BubbleGrid() {
 
   return (
     <div className="glass playground-card w-full max-w-[400px]">
-      <div className="flex items-baseline justify-between mb-6">
-        <p className="text-sm text-text-secondary">Pop them all.</p>
+      <div className="flex flex-col items-center justify-center mb-6">
+        <p className="text-sm text-text-secondary mb-2">Pop them all.</p>
         <div className="flex items-baseline gap-2">
           <span className="text-2xl font-extralight text-accent tabular-nums">{pops}</span>
           <span className="text-[10px] text-text-tertiary uppercase tracking-[2px]">pops</span>
@@ -269,11 +269,11 @@ function DownloadButton() {
   return (
     <a href="/BubbleWrap.zip" download="BubbleWrap.zip" className="cta">
       <AppleLogo />
-      <div className="text-left">
-        <span className="block text-[10px] text-text-tertiary uppercase tracking-[1.5px] leading-none mb-1">
+      <div className="flex flex-col items-start text-left">
+        <span className="text-[10px] text-text-tertiary uppercase tracking-[1.5px] leading-none mb-1">
           Download for
         </span>
-        <span className="block text-base font-semibold leading-none">
+        <span className="text-base font-semibold leading-none">
           macOS
         </span>
       </div>
@@ -322,12 +322,12 @@ export default function App() {
 
             <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.035em] leading-[1.05] mb-7">
               <span className="bg-gradient-to-b from-white via-white/85 to-white/40 bg-clip-text text-transparent">
-                Stress relief,<br />one pop at a time.
+                Stress relief, <br />one pop at a time.
               </span>
             </h1>
 
             <p className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-lg mx-auto mb-12">
-              Your Mac trackpad becomes bubble wrap.<br className="hidden sm:block" />
+              Your Mac trackpad becomes bubble wrap. <br className="hidden sm:block" />
               Press down. Feel the pop. That's it.
             </p>
 
@@ -384,7 +384,7 @@ export default function App() {
 
         {/* ── Final CTA ── */}
         <section id="download" className="section-block">
-          <div ref={ctaRef} className="reveal text-center">
+          <div ref={ctaRef} className="reveal flex flex-col items-center text-center">
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight mb-5">
               Your trackpad, but satisfying.
             </h2>
