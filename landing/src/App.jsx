@@ -202,7 +202,7 @@ const features = [
     Icon: IconHapticPulse,
     variant: 'haptic',
     title: 'Taptic Engine Feedback',
-    desc: 'Real haptic clicks through Apple\\'s Force Touch — not vibration, actual tactile snaps.',
+    desc: "Real haptic clicks through Apple's Force Touch — not vibration, actual tactile snaps.",
   },
   {
     Icon: IconBubbleSquish,
