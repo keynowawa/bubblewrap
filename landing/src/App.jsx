@@ -204,7 +204,7 @@ function Navbar() {
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
       scrolled ? 'backdrop-blur-xl bg-surface/70 border-b border-glass-border' : ''
     }`}>
-      <div className="w-full max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="w-full max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
         <span className="text-[15px] font-semibold tracking-tight text-text-primary">
           bubblewrap
         </span>
@@ -252,7 +252,7 @@ export default function App() {
       <div className="noise" />
       <Navbar />
 
-      <main className="relative z-10 w-full max-w-3xl mx-auto px-6">
+      <main className="relative z-10 w-full max-w-4xl mx-auto px-6">
 
         {/* ── Hero ── */}
         <section className="min-h-[100dvh] flex flex-col items-center justify-center text-center">
