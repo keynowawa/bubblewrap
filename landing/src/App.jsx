@@ -4,43 +4,45 @@ import { useState, useCallback, useRef, useEffect } from 'react'
    SVG Icons
    ═══════════════════════════════════════ */
 
-function IconTouch() {
+function IconTrackpad() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 1v4M12 19v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M1 12h4M19 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-      <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="5" width="20" height="14" rx="3" />
+      <path d="M12 19V15" opacity="0.4" />
+      <circle cx="12" cy="11" r="2" fill="currentColor" opacity="0.8" />
+      <path d="M12 5v2" opacity="0.4" />
+    </svg>
+  )
+}
+
+function IconHaptics() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="7" y="8" width="10" height="8" rx="1.5" />
+      <path d="M4 12a8 8 0 0 1 0-4M4 16a8 8 0 0 0 0-8" opacity="0.3" />
+      <path d="M20 12a8 8 0 0 0 0-4M20 16a8 8 0 0 1 0-8" opacity="0.3" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" />
     </svg>
   )
 }
 
 function IconPhysics() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="9" />
-      <ellipse cx="12" cy="12" rx="9" ry="4" />
-      <line x1="12" y1="3" x2="12" y2="21" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 21a9 9 0 0 0 9-9c0-3-1-7-5-7-2 0-3 2-4 2s-2-2-4-2c-4 0-5 4-5 7a9 9 0 0 0 9 9z" />
+      <path d="M12 21c-2 0-4-1.5-4-4s1-3.5 1-3.5" opacity="0.4" />
+      <path d="M12 21c2 0 4-1.5 4-4s-1-3.5-1-3.5" opacity="0.4" />
     </svg>
   )
 }
 
-function IconCustom() {
+function IconMenubar() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1.5" />
-      <rect x="14" y="3" width="7" height="7" rx="1.5" />
-      <rect x="3" y="14" width="7" height="7" rx="1.5" />
-      <rect x="14" y="14" width="7" height="7" rx="1.5" opacity="0.4" strokeDasharray="2 2" />
-    </svg>
-  )
-}
-
-function IconNative() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10" />
-      <path d="M16 2.5c2.5 2 4.5 5.5 4.5 9.5" opacity="0.4" />
-      <circle cx="18" cy="6" r="3" />
-      <path d="M17 6h2M18 5v2" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M2 9h20" opacity="0.4" />
+      <circle cx="17" cy="6.5" r="1" fill="currentColor" />
+      <circle cx="19" cy="6.5" r="1" fill="currentColor" />
     </svg>
   )
 }
@@ -161,28 +163,28 @@ function BubbleGrid() {
    ═══════════════════════════════════════ */
 const features = [
   {
-    Icon: IconTouch,
+    Icon: IconTrackpad,
     variant: 'touch',
-    title: 'Force Touch haptics',
-    desc: 'Pressure-sensitive popping with real haptic feedback you feel through your trackpad.',
+    title: 'Your Trackpad is the Wrap',
+    desc: 'Apply physical pressure to your Mac trackpad. You literally feel the bubbles pop directly under your fingers.',
+  },
+  {
+    Icon: IconHaptics,
+    variant: 'physics',
+    title: 'Force Touch Engine',
+    desc: 'We reverse-engineered Apple’s Taptic Engine to deliver precise, localized haptic clicks that mimic snapping plastic.',
   },
   {
     Icon: IconPhysics,
-    variant: 'physics',
-    title: 'Real deformation',
-    desc: 'Bubbles squish and stretch under pressure before they pop. Popped bubbles show crinkled plastic.',
-  },
-  {
-    Icon: IconCustom,
     variant: 'custom',
-    title: 'Configurable sheets',
-    desc: 'Three grid sizes matched to 16:10 trackpads. Color tints. Lifetime pop counter.',
+    title: 'Liquid Glass Physics',
+    desc: 'Bubbles squish, stretch, and deform naturally before they burst. Built entirely with native AppKit animations.',
   },
   {
-    Icon: IconNative,
+    Icon: IconMenubar,
     variant: 'native',
-    title: 'Menu bar native',
-    desc: 'Built with AppKit and frosted glass. Lives in your menu bar. No dock icon, no Electron.',
+    title: 'Menu Bar Native',
+    desc: 'A lightweight utility that lives quietly in your menu bar. Drop it down whenever you need to relieve some stress.',
   },
 ]
 
@@ -206,7 +208,7 @@ function Navbar() {
         <span className="text-[15px] font-semibold tracking-tight text-text-primary">
           bubblewrap
         </span>
-        <a href="https://github.com/keynowawa/bubblewrap" target="_blank" rel="noopener noreferrer"
+        <a href="/BubbleWrap.zip" download="BubbleWrap.zip"
           className="text-[13px] text-text-secondary hover:text-text-primary transition-colors py-1.5 px-3 rounded-lg hover:bg-white/5">
           Download
         </a>
@@ -220,7 +222,7 @@ function Navbar() {
    ═══════════════════════════════════════ */
 function DownloadButton() {
   return (
-    <a href="https://github.com/keynowawa/bubblewrap" target="_blank" rel="noopener noreferrer" className="cta inline-flex">
+    <a href="/BubbleWrap.zip" download="BubbleWrap.zip" className="cta inline-flex group">
       <AppleLogo />
       <div className="text-left">
         <span className="block text-[10px] text-text-tertiary uppercase tracking-[1.5px] leading-none mb-0.5">
@@ -292,14 +294,14 @@ export default function App() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
               {features.map(({ Icon, variant, title, desc }) => (
-                <div key={title} className="glass feat text-center">
+                <div key={title} className="glass feat text-center flex flex-col justify-center items-center h-full">
                   <div className="flex flex-col items-center">
-                    <div className={`feat-icon feat-icon--${variant} mb-4`}>
+                    <div className={`feat-icon feat-icon--${variant} mb-5`}>
                       <Icon />
                     </div>
-                    <h3 className="text-[15px] font-medium text-text-primary mb-2 leading-tight">
+                    <h3 className="text-[16px] font-semibold text-text-primary mb-3 leading-tight tracking-tight">
                       {title}
                     </h3>
                     <p className="text-[13px] leading-[1.65] text-text-secondary max-w-[240px]">
