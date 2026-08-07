@@ -224,7 +224,7 @@ function Navbar() {
     <nav className={`nav-bar ${scrolled ? 'nav-scrolled' : ''}`}>
       <div className="nav-inner">
         <a href="#" className="nav-brand">
-          <span className="nav-brand-icon">🫧</span>
+          <img src="/bubblewrap-menubar-icon.png" alt="Logo" className="w-[18px] h-[18px] opacity-90" />
           <span className="nav-brand-text">bubblewrap</span>
         </a>
 
