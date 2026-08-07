@@ -1,48 +1,75 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 
 /* ═══════════════════════════════════════
-   SVG Icons
+   SVG Icons — bespoke to bubblewrap
    ═══════════════════════════════════════ */
 
-function IconTrackpad() {
+// A finger pressing down on a surface with pressure lines
+function IconFingerPress() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="5" width="20" height="14" rx="3" />
-      <path d="M12 19V15" opacity="0.4" />
-      <circle cx="12" cy="11" r="2" fill="currentColor" opacity="0.8" />
-      <path d="M12 5v2" opacity="0.4" />
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      {/* Finger */}
+      <path d="M16 4v14" />
+      <path d="M12 6c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" />
+      {/* Surface */}
+      <path d="M6 22h20" opacity="0.5" />
+      {/* Pressure dip */}
+      <path d="M10 22c0 0 2.5-3 6-3s6 3 6 3" />
+      {/* Pressure rings */}
+      <path d="M12 26c0-1.5 1.8-2.5 4-2.5s4 1 4 2.5" opacity="0.35" />
+      <path d="M9 29c0-2 3.1-3.5 7-3.5s7 1.5 7 3.5" opacity="0.2" />
     </svg>
   )
 }
 
-function IconHaptics() {
+// Concentric rings radiating from a single press point — haptic pulse
+function IconHapticPulse() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="7" y="8" width="10" height="8" rx="1.5" />
-      <path d="M4 12a8 8 0 0 1 0-4M4 16a8 8 0 0 0 0-8" opacity="0.3" />
-      <path d="M20 12a8 8 0 0 0 0-4M20 16a8 8 0 0 1 0-8" opacity="0.3" />
-      <circle cx="12" cy="12" r="1" fill="currentColor" />
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      {/* Contact point */}
+      <circle cx="16" cy="16" r="2" fill="currentColor" />
+      {/* Pulse rings */}
+      <circle cx="16" cy="16" r="6" opacity="0.6" />
+      <circle cx="16" cy="16" r="10" opacity="0.35" />
+      <circle cx="16" cy="16" r="14" opacity="0.15" />
     </svg>
   )
 }
 
-function IconPhysics() {
+// A bubble being squeezed — circle compressed from top
+function IconBubbleSquish() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 21a9 9 0 0 0 9-9c0-3-1-7-5-7-2 0-3 2-4 2s-2-2-4-2c-4 0-5 4-5 7a9 9 0 0 0 9 9z" />
-      <path d="M12 21c-2 0-4-1.5-4-4s1-3.5 1-3.5" opacity="0.4" />
-      <path d="M12 21c2 0 4-1.5 4-4s-1-3.5-1-3.5" opacity="0.4" />
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      {/* Squished bubble shape */}
+      <ellipse cx="16" cy="18" rx="10" ry="8" />
+      {/* Pressure from above */}
+      <path d="M11 11l2 3" opacity="0.4" />
+      <path d="M21 11l-2 3" opacity="0.4" />
+      <path d="M16 8v4" opacity="0.4" />
+      {/* Specular highlight */}
+      <ellipse cx="13" cy="15" rx="2.5" ry="1" opacity="0.3" fill="currentColor" />
     </svg>
   )
 }
 
-function IconMenubar() {
+// macOS menu bar strip with a bubble icon in the system tray
+function IconMenuBarTray() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="M2 9h20" opacity="0.4" />
-      <circle cx="17" cy="6.5" r="1" fill="currentColor" />
-      <circle cx="19" cy="6.5" r="1" fill="currentColor" />
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      {/* Menu bar strip */}
+      <rect x="2" y="4" width="28" height="6" rx="1.5" />
+      {/* Apple menu dot */}
+      <circle cx="6" cy="7" r="1" fill="currentColor" opacity="0.5" />
+      {/* Tray: tiny bubble icon */}
+      <circle cx="24" cy="7" r="1.8" />
+      <ellipse cx="23" cy="6.2" rx="0.6" ry="0.3" fill="currentColor" opacity="0.4" />
+      {/* Dropdown panel */}
+      <rect x="16" y="12" width="14" height="16" rx="2" opacity="0.6" />
+      {/* Bubbles in panel */}
+      <circle cx="21" cy="17" r="2" opacity="0.4" />
+      <circle cx="27" cy="17" r="2" opacity="0.4" />
+      <circle cx="21" cy="23" r="2" opacity="0.4" />
+      <circle cx="27" cy="23" r="2" opacity="0.4" />
     </svg>
   )
 }
@@ -108,6 +135,9 @@ function HeroBubble() {
             style={{ '--tx': `${p.tx}px`, '--ty': `${p.ty}px`, left: '50%', top: '50%' }} />
         ))}
       </div>
+      {!popped && (
+        <span className="hero-bubble-hint">press me</span>
+      )}
     </div>
   )
 }
@@ -140,11 +170,11 @@ function BubbleGrid() {
   }, [allPopped])
 
   return (
-    <div className="glass p-6">
-      <div className="flex items-baseline justify-between mb-5">
+    <div className="glass playground-card">
+      <div className="flex items-baseline justify-between mb-6">
         <p className="text-sm text-text-secondary">Pop them all.</p>
-        <div className="flex items-baseline gap-1.5">
-          <span className="text-xl font-extralight text-accent tabular-nums">{pops}</span>
+        <div className="flex items-baseline gap-2">
+          <span className="text-2xl font-extralight text-accent tabular-nums">{pops}</span>
           <span className="text-[10px] text-text-tertiary uppercase tracking-[2px]">pops</span>
         </div>
       </div>
@@ -163,28 +193,28 @@ function BubbleGrid() {
    ═══════════════════════════════════════ */
 const features = [
   {
-    Icon: IconTrackpad,
+    Icon: IconFingerPress,
     variant: 'touch',
-    title: 'Your Trackpad is the Wrap',
-    desc: 'Apply physical pressure to your Mac trackpad. You literally feel the bubbles pop directly under your fingers.',
+    title: 'Your Trackpad Is the Wrap',
+    desc: 'Press down on your Mac trackpad and feel each bubble pop under your finger.',
   },
   {
-    Icon: IconHaptics,
+    Icon: IconHapticPulse,
+    variant: 'haptic',
+    title: 'Taptic Engine Feedback',
+    desc: 'Real haptic clicks through Apple's Force Touch — not vibration, actual tactile snaps.',
+  },
+  {
+    Icon: IconBubbleSquish,
     variant: 'physics',
-    title: 'Force Touch Engine',
-    desc: 'We reverse-engineered Apple’s Taptic Engine to deliver precise, localized haptic clicks that mimic snapping plastic.',
+    title: 'Liquid Deformation',
+    desc: 'Bubbles squish and stretch under pressure before they burst. Built with native AppKit.',
   },
   {
-    Icon: IconPhysics,
-    variant: 'custom',
-    title: 'Liquid Glass Physics',
-    desc: 'Bubbles squish, stretch, and deform naturally before they burst. Built entirely with native AppKit animations.',
-  },
-  {
-    Icon: IconMenubar,
+    Icon: IconMenuBarTray,
     variant: 'native',
-    title: 'Menu Bar Native',
-    desc: 'A lightweight utility that lives quietly in your menu bar. Drop it down whenever you need to relieve some stress.',
+    title: 'Lives in Your Menu Bar',
+    desc: 'A lightweight native utility. Drop it down when you need it. No dock icon, no Electron.',
   },
 ]
 
@@ -193,6 +223,7 @@ const features = [
    ═══════════════════════════════════════ */
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 30)
@@ -200,19 +231,50 @@ function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
+  const links = [
+    { label: 'Features', href: '#features' },
+    { label: 'Try It', href: '#playground' },
+    { label: 'Download', href: '#download' },
+  ]
+
   return (
-    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
-      scrolled ? 'backdrop-blur-xl bg-surface/70 border-b border-glass-border' : ''
-    }`}>
-      <div className="w-full max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-        <span className="text-[15px] font-semibold tracking-tight text-text-primary">
-          bubblewrap
-        </span>
-        <a href="/BubbleWrap.zip" download="BubbleWrap.zip"
-          className="text-[13px] text-text-secondary hover:text-text-primary transition-colors py-1.5 px-3 rounded-lg hover:bg-white/5">
-          Download
+    <nav className={`nav-bar ${scrolled ? 'nav-scrolled' : ''}`}>
+      <div className="nav-inner">
+        <a href="#" className="nav-brand">
+          <span className="nav-brand-icon">🫧</span>
+          <span className="nav-brand-text">bubblewrap</span>
         </a>
+
+        {/* Desktop links */}
+        <div className="nav-links">
+          {links.map(l => (
+            <a key={l.label} href={l.href} className="nav-link">{l.label}</a>
+          ))}
+          <a href="/BubbleWrap.zip" download="BubbleWrap.zip" className="nav-cta">
+            <AppleLogo />
+            <span>Get the App</span>
+          </a>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button className="nav-mobile-btn" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+          <span className={`hamburger ${mobileOpen ? 'open' : ''}`} />
+        </button>
       </div>
+
+      {/* Mobile dropdown */}
+      {mobileOpen && (
+        <div className="nav-mobile-menu">
+          {links.map(l => (
+            <a key={l.label} href={l.href} className="nav-mobile-link" onClick={() => setMobileOpen(false)}>
+              {l.label}
+            </a>
+          ))}
+          <a href="/BubbleWrap.zip" download="BubbleWrap.zip" className="nav-mobile-link nav-mobile-cta">
+            <AppleLogo /> Get the App
+          </a>
+        </div>
+      )}
     </nav>
   )
 }
@@ -222,10 +284,10 @@ function Navbar() {
    ═══════════════════════════════════════ */
 function DownloadButton() {
   return (
-    <a href="/BubbleWrap.zip" download="BubbleWrap.zip" className="cta inline-flex group">
+    <a href="/BubbleWrap.zip" download="BubbleWrap.zip" className="cta">
       <AppleLogo />
       <div className="text-left">
-        <span className="block text-[10px] text-text-tertiary uppercase tracking-[1.5px] leading-none mb-0.5">
+        <span className="block text-[10px] text-text-tertiary uppercase tracking-[1.5px] leading-none mb-1">
           Download for
         </span>
         <span className="block text-base font-semibold leading-none">
@@ -237,8 +299,21 @@ function DownloadButton() {
 }
 
 /* ═══════════════════════════════════════
-   Page — everything centered on a single
-   consistent max-w-3xl (672px) axis
+   Scroll down indicator
+   ═══════════════════════════════════════ */
+function ScrollHint() {
+  return (
+    <div className="scroll-hint">
+      <svg width="20" height="32" viewBox="0 0 20 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <rect x="1" y="1" width="18" height="30" rx="9" />
+        <line x1="10" y1="8" x2="10" y2="14" className="scroll-hint-dot" />
+      </svg>
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════
+   Page
    ═══════════════════════════════════════ */
 export default function App() {
   const heroRef = useReveal(0.05)
@@ -252,133 +327,129 @@ export default function App() {
       <div className="noise" />
       <Navbar />
 
-      <main className="relative z-10 w-full max-w-4xl mx-auto px-6">
+      <main className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-10">
 
         {/* ── Hero ── */}
-        <section className="min-h-[100dvh] flex flex-col items-center justify-center text-center">
+        <section className="min-h-[100dvh] flex flex-col items-center justify-center text-center relative">
           <div ref={heroRef} className="reveal">
 
-            <div className="mb-12">
+            <div className="mb-16">
               <HeroBubble />
             </div>
 
-            <h1 className="text-[clamp(2.5rem,6vw,3.75rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-5">
-              <span className="bg-gradient-to-b from-white via-white/80 to-white/40 bg-clip-text text-transparent">
-                Pop stress away.
+            <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.035em] leading-[1.05] mb-7">
+              <span className="bg-gradient-to-b from-white via-white/85 to-white/40 bg-clip-text text-transparent">
+                Stress relief,<br />one pop at a time.
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-md mx-auto mb-10">
-              Digital bubble wrap with real Force Touch haptics.
-              A macOS menu bar app you can feel.
+            <p className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-lg mx-auto mb-12">
+              Your Mac trackpad becomes bubble wrap.<br className="hidden sm:block" />
+              Press down. Feel the pop. That's it.
             </p>
 
             <DownloadButton />
           </div>
+
+          <ScrollHint />
         </section>
 
-        <div className="sep" />
-
         {/* ── Features ── */}
-        <section className="py-20 sm:py-24">
+        <section id="features" className="section-block">
           <div ref={featRef} className="reveal">
 
-            <div className="text-center mb-12">
-              <p className="text-xs text-accent uppercase tracking-[3px] font-medium mb-3">
-                How it works
-              </p>
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                It pops. You feel it.
+            <div className="text-center mb-16">
+              <p className="section-label">Why it feels real</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+                Not a gimmick.
                 <br />
-                <span className="text-text-secondary font-normal">That's the whole point.</span>
+                <span className="text-text-secondary font-normal">An experience.</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {features.map(({ Icon, variant, title, desc }) => (
-                <div key={title} className="glass feat text-center flex flex-col justify-center items-center h-full">
-                  <div className="flex flex-col items-center">
-                    <div className={`feat-icon feat-icon--${variant} mb-5`}>
-                      <Icon />
-                    </div>
-                    <h3 className="text-[16px] font-semibold text-text-primary mb-3 leading-tight tracking-tight">
-                      {title}
-                    </h3>
-                    <p className="text-[13px] leading-[1.65] text-text-secondary max-w-[240px]">
-                      {desc}
-                    </p>
+                <div key={title} className="feat-card glass">
+                  <div className={`feat-icon feat-icon--${variant}`}>
+                    <Icon />
                   </div>
+                  <h3 className="feat-title">{title}</h3>
+                  <p className="feat-desc">{desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <div className="sep" />
-
         {/* ── Interactive Playground ── */}
-        <section className="py-20 sm:py-24">
-          <div ref={gridRef} className="reveal max-w-sm mx-auto">
-            <BubbleGrid />
+        <section id="playground" className="section-block section-alt">
+          <div ref={gridRef} className="reveal">
+            <div className="text-center mb-14">
+              <p className="section-label">Try it right here</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+                Go ahead.
+                <br />
+                <span className="text-text-secondary font-normal">You know you want to.</span>
+              </h2>
+            </div>
+
+            <div className="max-w-lg mx-auto">
+              <BubbleGrid />
+            </div>
           </div>
         </section>
 
-        <div className="sep" />
-
         {/* ── Final CTA ── */}
-        <section id="download" className="py-20 sm:py-28">
+        <section id="download" className="section-block">
           <div ref={ctaRef} className="reveal text-center">
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight mb-5">
               Your trackpad, but satisfying.
             </h2>
-            <p className="text-sm text-text-secondary mb-8 max-w-xs mx-auto">
-              No ads. No bloat. Just bubble wrap that lives in your menu bar.
+            <p className="text-base text-text-secondary mb-10 max-w-sm mx-auto leading-relaxed">
+              Free. No ads. No bloat. Just bubble wrap that lives in your menu bar.
             </p>
             <DownloadButton />
           </div>
         </section>
 
         {/* ── Footer ── */}
-        <footer className="border-t border-glass-border pt-16 pb-8 mt-12">
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-8 mb-12">
-            <div className="sm:col-span-2 pr-4">
-              <span className="block text-lg font-semibold tracking-tight text-text-primary mb-3">
-                bubblewrap
-              </span>
-              <p className="text-sm text-text-secondary leading-relaxed max-w-sm">
-                Digital bubble wrap with real Force Touch haptics. Pop stress away directly from your macOS menu bar, using native AppKit physics.
+        <footer className="footer">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <span className="footer-brand-name">bubblewrap</span>
+              <p className="footer-tagline">
+                A native macOS menu bar app that turns your Force Touch trackpad into real bubble wrap you can feel.
               </p>
             </div>
-            
-            <div>
-              <h4 className="text-sm font-semibold text-text-primary mb-4">Quick Links</h4>
-              <ul className="space-y-2.5 text-sm text-text-secondary">
-                <li><a href="#" className="hover:text-accent transition-colors">What is bubblewrap?</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">How It Works</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Data Privacy</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">FAQ</a></li>
+
+            <div className="footer-col">
+              <h4 className="footer-heading">Navigate</h4>
+              <ul className="footer-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#playground">Try It</a></li>
+                <li><a href="#download">Download</a></li>
               </ul>
             </div>
 
-            <div>
-              <h4 className="text-sm font-semibold text-text-primary mb-4">Resources</h4>
-              <ul className="space-y-2.5 text-sm text-text-secondary">
-                <li><a href="/BubbleWrap.zip" download className="hover:text-accent transition-colors">Download App</a></li>
-                <li><a href="https://github.com/keynowawa/bubblewrap" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">GitHub Repository</a></li>
-                <li><a href="mailto:info.keyno@gmail.com" className="hover:text-accent transition-colors">Report an Issue</a></li>
+            <div className="footer-col">
+              <h4 className="footer-heading">Resources</h4>
+              <ul className="footer-links">
+                <li><a href="/BubbleWrap.zip" download>Download App</a></li>
+                <li><a href="https://github.com/keynowawa/bubblewrap" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="mailto:info.keyno@gmail.com">Report an Issue</a></li>
               </ul>
             </div>
 
-            <div>
-              <h4 className="text-sm font-semibold text-text-primary mb-4">Legal</h4>
-              <ul className="space-y-2.5 text-sm text-text-secondary">
-                <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Terms & Conditions</a></li>
+            <div className="footer-col">
+              <h4 className="footer-heading">Legal</h4>
+              <ul className="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-glass-border/40 text-[13px] text-text-tertiary">
+          <div className="footer-bottom">
             <span>v1.0.0 &copy; 2026 keynowawa. All rights reserved.</span>
             <span>Developed by Kyann Tagle</span>
           </div>
